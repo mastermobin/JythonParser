@@ -1,0 +1,23 @@
+import Him
+
+class Mobin{
+
+    float[10] c = float()[3]
+    Sina si
+    string man = "Khar"
+    Hey h
+
+    def Hey b(int t, string n, Sina s){
+
+    }
+
+    def Sina b(Hey r){
+
+    }
+
+    def void a(){
+        #c[1][2].a = 1
+        Sina[2] x = Sina()[2]
+        x[3].a.b(5, "Hey", si.a.b(b(3, man, self.b(h).a.si))).mobin = 3
+    }
+}

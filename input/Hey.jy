@@ -1,0 +1,58 @@
+import Me
+
+class Hey {
+    int a
+    Mobin mobin
+    #Ali mobin
+    int [10] hoom
+
+    def void main(int yekAddai){
+        #Some Comment
+        int nums
+        float f = 5.5
+        Name [7] m = Name()[7]
+        while(f > 5){
+            int inif
+            f -= 0.3
+        }
+
+        #*
+        Multiline
+        Comment
+        Test
+        *#
+
+        string test = "Haha!"
+
+        #int test
+        int te = (5 + 3) * 4
+
+        for i in range(4){
+            string test
+            print(i)
+        }
+
+        if(f > 6){
+            print("Yeah")
+        }elif(test == "Mo"){
+            print("Hooom")
+        }else{
+            for j in nums{
+                print(j)
+            }
+        }
+
+    }
+
+    def int fu(int inp, float fl){
+
+        return 4 + 4 * 3
+
+    }
+
+    #*
+    def void fu(int n, float vg){
+
+    }
+    *#
+}
