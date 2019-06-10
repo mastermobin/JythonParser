@@ -1,4 +1,23 @@
+import Models.Error;
+
 public class Expression {
+
+    class ExpResult{
+        Error error;
+        String result;
+        boolean success;
+
+        public ExpResult(Error error) {
+            this.error = error;
+            success = false;
+            result = "unknown";
+        }
+
+        public ExpResult(String result) {
+            this.result = result;
+            success = true;
+        }
+    }
 
     public enum Operator{
         ADD,
@@ -16,6 +35,8 @@ public class Expression {
 
     public Expression parent;
     Expression left, right;
+    String leftS, rightS;
+    String all;
     Operator operator;
     String type;
 
@@ -63,6 +84,17 @@ public class Expression {
         }
     }
 
+    public Expression setStrings(String leftS, String rightS) {
+        this.leftS = leftS;
+        this.rightS = rightS;
+        return this;
+    }
+
+    public Expression setAll(String all) {
+        this.all = all;
+        return this;
+    }
+
     public void setType(String type) {
         this.type = type;
     }
@@ -80,34 +112,37 @@ public class Expression {
         return right;
     }
 
-    String process(){
+    ExpResult process(int line, String fileName){
         if(right == null && left == null)
-            return type;
+            return new ExpResult(type);
         else if(right == null)
-            return left.process();
+            return left.process(line, fileName);
 
-        String typeLeft = left.process();
-        String typeRight = right.process();
+        String typeLeft = left.process(line, fileName).result;
+        String typeRight = right.process(line, fileName).result;
+
+        if(typeLeft.equals("unknown") || typeRight.equals("unknown"))
+            return new ExpResult(Error.error115(line, fileName, all));
 
         if(operator == Operator.EQ || operator == Operator.NEQ || operator == Operator.LTE || operator == Operator.LT || operator == Operator.GTE || operator == Operator.GT)
-            return "bool";
+            return new ExpResult("bool");
         else if(operator == Operator.ADD){
             if(typeLeft.equals("string") || typeRight.equals("string"))
-                return "string";
+                return new ExpResult("string");
             else if(typeLeft.equals("int") && typeRight.equals("int"))
-                return "int";
+                return new ExpResult("int");
             else if(typeLeft.equals("float") || typeRight.equals("float"))
-                return "float";
+                return new ExpResult("float");
         }else if(operator == Operator.MUL || operator == Operator.DIV || operator == Operator.SUB){
             if(typeLeft.equals("int") && typeRight.equals("int"))
-                return "int";
-            else if(typeLeft.equals("float") || typeRight.equals("right"))
-                return "float";
+                return new ExpResult("int");
+            else if(typeLeft.equals("float") || typeRight.equals("float"))
+                return new ExpResult("float");
         }else if(operator == Operator.MOD){
             if(typeLeft.equals("int") && typeRight.equals("int"))
-                return "int";
+                return new ExpResult("int");
         }
 
-        return "unknown";
+        return new ExpResult(Error.error114(line, operator.toString(), leftS, rightS, fileName));
     }
 }

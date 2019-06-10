@@ -32,27 +32,9 @@ class Hey {
             print(i)
         }
 
-        if(f > 6){
-            print("Yeah")
-        }elif(test == "Mo"){
-            print("Hooom")
-        }else{
-            for j in nums{
-                print(j)
-            }
-        }
-
     }
 
     def int fu(int inp, float fl){
-
         return 4 + 4 * 3
-
     }
-
-    #*
-    def void fu(int n, float vg){
-
-    }
-    *#
 }

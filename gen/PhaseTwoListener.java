@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Stack;
 
 
-public class PhaseTwoListener implements JythonListener {
+public class PhaseTwoListener extends JythonBaseListener {
     private String fileName;
     private Node node;
     private static int memory = 0;
@@ -69,23 +69,14 @@ public class PhaseTwoListener implements JythonListener {
     }
 
     @Override
-    public void enterProgram(JythonParser.ProgramContext ctx) {
-
-    }
-
-    @Override
-    public void exitProgram(JythonParser.ProgramContext ctx) {
-
-    }
-
-    @Override
-    public void enterImportclass(JythonParser.ImportclassContext ctx) {
-
-    }
-
-    @Override
-    public void exitImportclass(JythonParser.ImportclassContext ctx) {
-
+    public void exitReturn_statment(JythonParser.Return_statmentContext ctx) {
+        String returnType = node.getCurMethod().getReturnType();
+        if (!lastType.equals(returnType)) {
+            if (returnType.equals("void"))
+                errors.add(Error.error231(ctx.start.getLine(), fileName));
+            else
+                errors.add(Error.error230(ctx.start.getLine(), fileName, node.getCurMethod().getReturnType()));
+        }
     }
 
     @Override
@@ -99,36 +90,6 @@ public class PhaseTwoListener implements JythonListener {
     }
 
     @Override
-    public void enterClass_body(JythonParser.Class_bodyContext ctx) {
-
-    }
-
-    @Override
-    public void exitClass_body(JythonParser.Class_bodyContext ctx) {
-
-    }
-
-    @Override
-    public void enterVarDec(JythonParser.VarDecContext ctx) {
-
-    }
-
-    @Override
-    public void exitVarDec(JythonParser.VarDecContext ctx) {
-
-    }
-
-    @Override
-    public void enterArrayDec(JythonParser.ArrayDecContext ctx) {
-
-    }
-
-    @Override
-    public void exitArrayDec(JythonParser.ArrayDecContext ctx) {
-
-    }
-
-    @Override
     public void enterMethodDec(JythonParser.MethodDecContext ctx) {
         node = node.move();
     }
@@ -139,76 +100,6 @@ public class PhaseTwoListener implements JythonListener {
     }
 
     @Override
-    public void enterReturn_type(JythonParser.Return_typeContext ctx) {
-
-    }
-
-    @Override
-    public void exitReturn_type(JythonParser.Return_typeContext ctx) {
-
-    }
-
-    @Override
-    public void enterConstructor(JythonParser.ConstructorContext ctx) {
-
-    }
-
-    @Override
-    public void exitConstructor(JythonParser.ConstructorContext ctx) {
-
-    }
-
-    @Override
-    public void enterVariable(JythonParser.VariableContext ctx) {
-
-    }
-
-    @Override
-    public void exitVariable(JythonParser.VariableContext ctx) {
-
-    }
-
-    @Override
-    public void enterParameters(JythonParser.ParametersContext ctx) {
-
-    }
-
-    @Override
-    public void exitParameters(JythonParser.ParametersContext ctx) {
-
-    }
-
-    @Override
-    public void enterStatment(JythonParser.StatmentContext ctx) {
-
-    }
-
-    @Override
-    public void exitStatment(JythonParser.StatmentContext ctx) {
-
-    }
-
-    @Override
-    public void enterReturn_statment(JythonParser.Return_statmentContext ctx) {
-
-    }
-
-    @Override
-    public void exitReturn_statment(JythonParser.Return_statmentContext ctx) {
-
-    }
-
-    @Override
-    public void enterCondition_list(JythonParser.Condition_listContext ctx) {
-
-    }
-
-    @Override
-    public void exitCondition_list(JythonParser.Condition_listContext ctx) {
-
-    }
-
-    @Override
     public void enterWhile_statment(JythonParser.While_statmentContext ctx) {
         node = node.move();
     }
@@ -216,16 +107,6 @@ public class PhaseTwoListener implements JythonListener {
     @Override
     public void exitWhile_statment(JythonParser.While_statmentContext ctx) {
         node = node.move();
-    }
-
-    @Override
-    public void enterIf_else_statment(JythonParser.If_else_statmentContext ctx) {
-
-    }
-
-    @Override
-    public void exitIf_else_statment(JythonParser.If_else_statmentContext ctx) {
-
     }
 
     @Override
@@ -259,16 +140,6 @@ public class PhaseTwoListener implements JythonListener {
     }
 
     @Override
-    public void enterPrint_statment(JythonParser.Print_statmentContext ctx) {
-
-    }
-
-    @Override
-    public void exitPrint_statment(JythonParser.Print_statmentContext ctx) {
-
-    }
-
-    @Override
     public void enterFor_statment(JythonParser.For_statmentContext ctx) {
         node = node.move();
     }
@@ -296,18 +167,8 @@ public class PhaseTwoListener implements JythonListener {
     }
 
     @Override
-    public void exitVar(JythonParser.VarContext ctx) {
-
-    }
-
-    @Override
     public void enterFunc(JythonParser.FuncContext ctx) {
         tracers.peek().addRing(new Tracer.Ring(Tracer.RefType.METHOD, ctx.funcName.getText()));
-    }
-
-    @Override
-    public void exitFunc(JythonParser.FuncContext ctx) {
-
     }
 
     @Override
@@ -322,32 +183,12 @@ public class PhaseTwoListener implements JythonListener {
     }
 
     @Override
-    public void enterParentheses(JythonParser.ParenthesesContext ctx) {
-
-    }
-
-    @Override
-    public void exitParentheses(JythonParser.ParenthesesContext ctx) {
-
-    }
-
-    @Override
-    public void enterAssignment(JythonParser.AssignmentContext ctx) {
-
-    }
-
-    @Override
-    public void exitAssignment(JythonParser.AssignmentContext ctx) {
-
-    }
-
-    @Override
     public void enterExpression(JythonParser.ExpressionContext ctx) {
         if (!ctx.expression().isEmpty()) {
             if (!(ctx.parent instanceof JythonParser.ExpressionContext))
-                expressions.push(new Expression(ctx));
+                expressions.push(new Expression(ctx).setStrings(ctx.expression(0).getText(), ctx.expression(1).getText()).setAll(ctx.getText()));
             else {
-                expressions.peek().addExp(new Expression(expressions.peek(), ctx));
+                expressions.peek().addExp(new Expression(expressions.peek(), ctx).setStrings(ctx.expression(0).getText(), ctx.expression(1).getText()).setAll(ctx.getText()));
                 expressions.push(expressions.pop().digIn());
             }
         } else {
@@ -377,20 +218,13 @@ public class PhaseTwoListener implements JythonListener {
         expressions.push(expressions.pop().parent);
 
         if (!(ctx.parent instanceof JythonParser.ExpressionContext)) {
-            String exp = expressions.pop().process();
-            if (!args.isEmpty())
-                args.peek().add(exp);
+            Expression.ExpResult result = expressions.pop().process(ctx.start.getLine(), fileName);
+            lastType = result.result;
+            if (!result.success)
+                errors.add(result.error);
+            if (ctx.parent instanceof JythonParser.ExplistContext)
+                args.peek().add(lastType);
         }
-    }
-
-    @Override
-    public void enterRightExp(JythonParser.RightExpContext ctx) {
-
-    }
-
-    @Override
-    public void exitRightExp(JythonParser.RightExpContext ctx) {
-
     }
 
     @Override
@@ -403,16 +237,6 @@ public class PhaseTwoListener implements JythonListener {
     @Override
     public void exitLeftExp(JythonParser.LeftExpContext ctx) {
         chainErrorCheck(ctx.start.getLine());
-    }
-
-    @Override
-    public void enterLeftFun(JythonParser.LeftFunContext ctx) {
-
-    }
-
-    @Override
-    public void exitLeftFun(JythonParser.LeftFunContext ctx) {
-
     }
 
     @Override
@@ -430,103 +254,4 @@ public class PhaseTwoListener implements JythonListener {
 //        System.out.println(p.toString());
     }
 
-    @Override
-    public void enterExplist(JythonParser.ExplistContext ctx) {
-
-    }
-
-    @Override
-    public void exitExplist(JythonParser.ExplistContext ctx) {
-
-    }
-
-    @Override
-    public void enterAssignment_operators(JythonParser.Assignment_operatorsContext ctx) {
-
-    }
-
-    @Override
-    public void exitAssignment_operators(JythonParser.Assignment_operatorsContext ctx) {
-
-    }
-
-    @Override
-    public void enterEq_neq(JythonParser.Eq_neqContext ctx) {
-
-    }
-
-    @Override
-    public void exitEq_neq(JythonParser.Eq_neqContext ctx) {
-
-    }
-
-    @Override
-    public void enterRelation_operators(JythonParser.Relation_operatorsContext ctx) {
-
-    }
-
-    @Override
-    public void exitRelation_operators(JythonParser.Relation_operatorsContext ctx) {
-
-    }
-
-    @Override
-    public void enterAdd_sub(JythonParser.Add_subContext ctx) {
-
-    }
-
-    @Override
-    public void exitAdd_sub(JythonParser.Add_subContext ctx) {
-
-    }
-
-    @Override
-    public void enterMult_mod_div(JythonParser.Mult_mod_divContext ctx) {
-
-    }
-
-    @Override
-    public void exitMult_mod_div(JythonParser.Mult_mod_divContext ctx) {
-
-    }
-
-    @Override
-    public void enterType(JythonParser.TypeContext ctx) {
-
-    }
-
-    @Override
-    public void exitType(JythonParser.TypeContext ctx) {
-
-    }
-
-    @Override
-    public void enterJythonType(JythonParser.JythonTypeContext ctx) {
-
-    }
-
-    @Override
-    public void exitJythonType(JythonParser.JythonTypeContext ctx) {
-
-    }
-
-    @Override
-    public void visitTerminal(TerminalNode terminalNode) {
-
-    }
-
-    @Override
-    public void visitErrorNode(ErrorNode errorNode) {
-
-    }
-
-    @Override
-    public void enterEveryRule(ParserRuleContext parserRuleContext) {
-
-    }
-
-    @Override
-    public void exitEveryRule(ParserRuleContext parserRuleContext) {
-
-    }
 }

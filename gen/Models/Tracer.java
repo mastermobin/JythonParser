@@ -37,8 +37,7 @@ public class Tracer {
 
     private List<Ring> chain = new ArrayList<>();
 
-    public Tracer() {
-    }
+    public Tracer() {}
 
     public ValidationResult validate(Node node, int line, String fileName, List<String> params) {
         Node it = node;
@@ -58,7 +57,7 @@ public class Tracer {
             }
             else if(ring.getRefType() == RefType.VARIABLE && lastRes != null && lastRes.isArray()){
                 ValidationResult res = new ValidationResult(false);
-                res.setError(new Error(line, "Select an element of array before use", fileName, 113));
+                res.setError(Error.error113(line, lastName, fileName));
                 return res;
             }
             else if (it == null) {

@@ -1,5 +1,6 @@
 package Models;
 
+import Models.Basic.Class;
 import Models.Basic.Method;
 import Models.Basic.Property;
 import Models.Basic.Variable;
@@ -18,6 +19,8 @@ public class Node {
     public Node parent;
     private String label;
     private int moveMemory = 0;
+    private Class curClass = null;
+    private  Method curMethod = null;
 
     private Node(){
         parent = this;
@@ -97,5 +100,21 @@ public class Node {
             return table.get(name).getMethod((List<String>) t);
         }
         return null;
+    }
+
+    public void setCurClass(Class curClass) {
+        this.curClass = curClass;
+    }
+
+    public void setCurMethod(Method curMethod) {
+        this.curMethod = curMethod;
+    }
+
+    public Class getCurClass() {
+        return curClass;
+    }
+
+    public Method getCurMethod() {
+        return curMethod;
     }
 }

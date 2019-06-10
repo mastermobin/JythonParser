@@ -2,22 +2,28 @@ import Him
 
 class Mobin{
 
-    float[10] c = float()[3]
-    Sina si
+    #float[10] c = float()[3]
+    Homa si
     string man = "Khar"
     Hey h
 
-    def Hey b(int t, string n, Sina s){
+    def Hey b(int t, string n, Homa s){
 
     }
 
-    def Sina b(Hey r){
-
+    def int c(float f){
+        return c(3.5)
     }
 
     def void a(){
         #c[1][2].a = 1
-        Sina[2] x = Sina()[2]
-        x[3].a.b(5, "Hey", si.a.b(b(3, man, self.b(h).a.si))).mobin = 3
+        Homa[2] x = Homa()[2]
+        b(h)
+        x[1].a.b(8*(4 + 3), "Hey", si.a.b(b(3, man, b(h).a.si))).mobin = 3
+        c(3 * 2.5)
     }
+
+     def Homa b(Hey r){
+
+     }
 }

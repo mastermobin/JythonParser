@@ -41,8 +41,10 @@ public class Error {
             args.append(param);
             args.append(", ");
         }
-        args.deleteCharAt(args.length() - 1);
-        args.deleteCharAt(args.length() - 1);
+        if(!params.isEmpty()) {
+            args.deleteCharAt(args.length() - 1);
+            args.deleteCharAt(args.length() - 1);
+        }
         args.append(")");
         String message = String.format("Error 105: in line %d, Can not find Method %s%s in %s", line, name, args.toString(), par);
         return new Error(line, message, fileName, 105);
@@ -78,6 +80,31 @@ public class Error {
         return new Error(line, message, fileName, 111);
     }
 
+    static Error error113(int line, String name, String fileName) {
+        String message = String.format("Error 113: in line %d, Select an element of array %s before use", line, name);
+        return new Error(line, message, fileName, 113);
+    }
+
+    public static Error error114(int line, String operator, String operandA, String operandB, String fileName) {
+        String message = String.format("Error 114: in line %d, Can not use operator %s on %s & %s", line, operator, operandA, operandB);
+        return new Error(line, message, fileName, 114);
+    }
+
+    public static Error error115(int line, String fileName, String all) {
+        String message = String.format("Error 115: in line %d, One of operators type is Unknown in %s", line, all);
+        return new Error(line, message, fileName, 114);
+    }
+
+    public static Error error230(int line, String fileName, String returnType) {
+        String message = String.format("Error 230: in line %d, ReturnType of this method must be %s.", line, returnType);
+        return new Error(line, message, fileName, 114);
+    }
+
+    public static Error error231(int line, String fileName) {
+        String message = String.format("Error 230: in line %d, void methods can't return value.", line);
+        return new Error(line, message, fileName, 114);
+    }
+
     public static Error error112(int line, String name, String fileName, List<String> params) {
         StringBuilder args = new StringBuilder("(");
         for(String param : params){
@@ -87,7 +114,7 @@ public class Error {
         args.deleteCharAt(args.length() - 1);
         args.deleteCharAt(args.length() - 1);
         args.append(")");
-        String message = String.format("Error 112: in line %d, Method %s%s call can't handle due unknown type of args", line, name, args.toString());
+        String message = String.format("Error 112: in line %d, Method %s%s call can't handle due Unknown type of args", line, name, args.toString());
         return new Error(line, message, fileName, 112);
     }
 
