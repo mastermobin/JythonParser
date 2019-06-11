@@ -2,10 +2,11 @@ import Him
 
 class Mobin{
 
-    #float[10] c = float()[3]
-    Homa si
+    #float[] c = float()[3]
+    #Homa si
     string man = "Khar"
-    Hey h
+    #Hey h
+    float fl = 2
 
     def Hey b(int t, string n, Homa s){
 
@@ -17,13 +18,14 @@ class Mobin{
 
     def void a(){
         #c[1][2].a = 1
-        Homa[2] x = Homa()[2]
-        b(h)
-        x[1].a.b(8*(4 + 3), "Hey", si.a.b(b(3, man, b(h).a.si))).mobin = 3
+        Homa[] x = Homa()[4]
+        #x[1].a.b(8*(4 + 3), "Hey", si.a.b(b(3, man, b(h).a.si))).mobin = 3
         c(3 * 2.5)
+        fl = 3.5
+        fl = true
+        print(c(fl))
+        while(3 and true){
+
+        }
     }
-
-     def Homa b(Hey r){
-
-     }
 }

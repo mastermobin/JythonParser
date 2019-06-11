@@ -51,17 +51,17 @@ public class Expression {
     Expression(JythonParser.ExpressionContext ctx) {
         parent = this;
 
-        if(ctx.mult_mod_div() != null){
-            String op = ctx.mult_mod_div().getText();
+        if(ctx.multModDiv() != null){
+            String op = ctx.multModDiv().getText();
             operator = op.equals("/") ? Operator.DIV : op.equals("%") ? Operator.MOD : Operator.MUL;
-        }else if(ctx.add_sub() != null){
-            String op = ctx.add_sub().getText();
+        }else if(ctx.addSub() != null){
+            String op = ctx.addSub().getText();
             operator = op.equals("+") ? Operator.ADD : Operator.SUB;
-        }else if(ctx.eq_neq() != null){
-            String op = ctx.eq_neq().getText();
+        }else if(ctx.eqNeq() != null){
+            String op = ctx.eqNeq().getText();
             operator = op.equals("==") ? Operator.EQ : Operator.NEQ;
-        }else if(ctx.relation_operators() != null){
-            String op = ctx.relation_operators().getText();
+        }else if(ctx.relationOperators() != null){
+            String op = ctx.relationOperators().getText();
             operator = op.equals(">") ? Operator.GT : op.equals("<") ? Operator.LT : op.equals(">=") ? Operator.GTE : Operator.LTE;
         }
     }
@@ -69,22 +69,22 @@ public class Expression {
     Expression(Expression parent, JythonParser.ExpressionContext ctx) {
         this.parent = parent;
 
-        if(ctx.mult_mod_div() != null){
-            String op = ctx.mult_mod_div().getText();
+        if(ctx.multModDiv() != null){
+            String op = ctx.multModDiv().getText();
             operator = op.equals("/") ? Operator.DIV : op.equals("%") ? Operator.MOD : Operator.MUL;
-        }else if(ctx.add_sub() != null){
-            String op = ctx.add_sub().getText();
+        }else if(ctx.addSub() != null){
+            String op = ctx.addSub().getText();
             operator = op.equals("+") ? Operator.ADD : Operator.SUB;
-        }else if(ctx.eq_neq() != null){
-            String op = ctx.eq_neq().getText();
+        }else if(ctx.eqNeq() != null){
+            String op = ctx.eqNeq().getText();
             operator = op.equals("==") ? Operator.EQ : Operator.NEQ;
-        }else if(ctx.relation_operators() != null){
-            String op = ctx.relation_operators().getText();
+        }else if(ctx.relationOperators() != null){
+            String op = ctx.relationOperators().getText();
             operator = op.equals(">") ? Operator.GT : op.equals("<") ? Operator.LT : op.equals(">=") ? Operator.GTE : Operator.LTE;
         }
     }
 
-    public Expression setStrings(String leftS, String rightS) {
+    Expression setStrings(String leftS, String rightS) {
         this.leftS = leftS;
         this.rightS = rightS;
         return this;
@@ -124,9 +124,10 @@ public class Expression {
         if(typeLeft.equals("unknown") || typeRight.equals("unknown"))
             return new ExpResult(Error.error115(line, fileName, all));
 
-        if(operator == Operator.EQ || operator == Operator.NEQ || operator == Operator.LTE || operator == Operator.LT || operator == Operator.GTE || operator == Operator.GT)
-            return new ExpResult("bool");
-        else if(operator == Operator.ADD){
+        if(operator == Operator.EQ || operator == Operator.NEQ || operator == Operator.LTE || operator == Operator.LT || operator == Operator.GTE || operator == Operator.GT) {
+            if ((typeLeft.equals("int") || typeLeft.equals("float")) && (typeRight.equals("int") || typeRight.equals("float")))
+                return new ExpResult("bool");
+        }else if(operator == Operator.ADD){
             if(typeLeft.equals("string") || typeRight.equals("string"))
                 return new ExpResult("string");
             else if(typeLeft.equals("int") && typeRight.equals("int"))
@@ -143,6 +144,6 @@ public class Expression {
                 return new ExpResult("int");
         }
 
-        return new ExpResult(Error.error114(line, operator.toString(), leftS, rightS, fileName));
+        return new ExpResult(Error.error280(line, operator.toString(), leftS, rightS, fileName));
     }
 }

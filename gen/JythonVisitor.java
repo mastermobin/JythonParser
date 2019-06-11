@@ -16,11 +16,11 @@ public interface JythonVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitProgram(JythonParser.ProgramContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JythonParser#importclass}.
+	 * Visit a parse tree produced by {@link JythonParser#importClass}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitImportclass(JythonParser.ImportclassContext ctx);
+	T visitImportClass(JythonParser.ImportClassContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JythonParser#classDec}.
 	 * @param ctx the parse tree
@@ -28,11 +28,11 @@ public interface JythonVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitClassDec(JythonParser.ClassDecContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JythonParser#class_body}.
+	 * Visit a parse tree produced by {@link JythonParser#classBody}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitClass_body(JythonParser.Class_bodyContext ctx);
+	T visitClassBody(JythonParser.ClassBodyContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JythonParser#varDec}.
 	 * @param ctx the parse tree
@@ -52,11 +52,11 @@ public interface JythonVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMethodDec(JythonParser.MethodDecContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JythonParser#return_type}.
+	 * Visit a parse tree produced by {@link JythonParser#returnType}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitReturn_type(JythonParser.Return_typeContext ctx);
+	T visitReturnType(JythonParser.ReturnTypeContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JythonParser#constructor}.
 	 * @param ctx the parse tree
@@ -76,71 +76,89 @@ public interface JythonVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitParameters(JythonParser.ParametersContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JythonParser#statment}.
+	 * Visit a parse tree produced by {@link JythonParser#statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitStatment(JythonParser.StatmentContext ctx);
+	T visitStatement(JythonParser.StatementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JythonParser#return_statment}.
+	 * Visit a parse tree produced by {@link JythonParser#returnStatement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitReturn_statment(JythonParser.Return_statmentContext ctx);
+	T visitReturnStatement(JythonParser.ReturnStatementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JythonParser#condition_list}.
+	 * Visit a parse tree produced by {@link JythonParser#conditionList}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitCondition_list(JythonParser.Condition_listContext ctx);
+	T visitConditionList(JythonParser.ConditionListContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JythonParser#while_statment}.
+	 * Visit a parse tree produced by {@link JythonParser#whileStatement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitWhile_statment(JythonParser.While_statmentContext ctx);
+	T visitWhileStatement(JythonParser.WhileStatementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JythonParser#if_else_statment}.
+	 * Visit a parse tree produced by {@link JythonParser#ifElseStatement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitIf_else_statment(JythonParser.If_else_statmentContext ctx);
+	T visitIfElseStatement(JythonParser.IfElseStatementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JythonParser#ifexp}.
+	 * Visit a parse tree produced by {@link JythonParser#ifExp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitIfexp(JythonParser.IfexpContext ctx);
+	T visitIfExp(JythonParser.IfExpContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JythonParser#elifexp}.
+	 * Visit a parse tree produced by {@link JythonParser#elifExp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitElifexp(JythonParser.ElifexpContext ctx);
+	T visitElifExp(JythonParser.ElifExpContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JythonParser#elseexp}.
+	 * Visit a parse tree produced by {@link JythonParser#elseExp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitElseexp(JythonParser.ElseexpContext ctx);
+	T visitElseExp(JythonParser.ElseExpContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JythonParser#print_statment}.
+	 * Visit a parse tree produced by {@link JythonParser#printStatement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitPrint_statment(JythonParser.Print_statmentContext ctx);
+	T visitPrintStatement(JythonParser.PrintStatementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JythonParser#for_statment}.
+	 * Visit a parse tree produced by {@link JythonParser#forStatement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFor_statment(JythonParser.For_statmentContext ctx);
+	T visitForStatement(JythonParser.ForStatementContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JythonParser#assignment}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitAssignment(JythonParser.AssignmentContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JythonParser#varDecAssign}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVarDecAssign(JythonParser.VarDecAssignContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JythonParser#varAssign}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVarAssign(JythonParser.VarAssignContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JythonParser#arrayRightDec}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArrayRightDec(JythonParser.ArrayRightDecContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JythonParser#expression}.
 	 * @param ctx the parse tree
@@ -166,11 +184,11 @@ public interface JythonVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLeftFun(JythonParser.LeftFunContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JythonParser#method_call}.
+	 * Visit a parse tree produced by {@link JythonParser#methodCall}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMethod_call(JythonParser.Method_callContext ctx);
+	T visitMethodCall(JythonParser.MethodCallContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JythonParser#var}.
 	 * @param ctx the parse tree
@@ -208,35 +226,35 @@ public interface JythonVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExplist(JythonParser.ExplistContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JythonParser#assignment_operators}.
+	 * Visit a parse tree produced by {@link JythonParser#assignmentOperators}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitAssignment_operators(JythonParser.Assignment_operatorsContext ctx);
+	T visitAssignmentOperators(JythonParser.AssignmentOperatorsContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JythonParser#eq_neq}.
+	 * Visit a parse tree produced by {@link JythonParser#eqNeq}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitEq_neq(JythonParser.Eq_neqContext ctx);
+	T visitEqNeq(JythonParser.EqNeqContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JythonParser#relation_operators}.
+	 * Visit a parse tree produced by {@link JythonParser#relationOperators}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitRelation_operators(JythonParser.Relation_operatorsContext ctx);
+	T visitRelationOperators(JythonParser.RelationOperatorsContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JythonParser#add_sub}.
+	 * Visit a parse tree produced by {@link JythonParser#addSub}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitAdd_sub(JythonParser.Add_subContext ctx);
+	T visitAddSub(JythonParser.AddSubContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JythonParser#mult_mod_div}.
+	 * Visit a parse tree produced by {@link JythonParser#multModDiv}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMult_mod_div(JythonParser.Mult_mod_divContext ctx);
+	T visitMultModDiv(JythonParser.MultModDivContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JythonParser#type}.
 	 * @param ctx the parse tree
@@ -249,4 +267,10 @@ public interface JythonVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitJythonType(JythonParser.JythonTypeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JythonParser#bool}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBool(JythonParser.BoolContext ctx);
 }

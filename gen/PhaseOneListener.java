@@ -95,55 +95,55 @@ public class PhaseOneListener extends JythonBaseListener {
     }
 
     @Override
-    public void enterWhile_statment(JythonParser.While_statmentContext ctx) {
+    public void enterWhileStatement(JythonParser.WhileStatementContext ctx) {
         node = new Node(node, "While");
         node.setCurClass(currentClass);
         node.setCurMethod(currentMethod);
     }
 
     @Override
-    public void exitWhile_statment(JythonParser.While_statmentContext ctx) {
+    public void exitWhileStatement(JythonParser.WhileStatementContext ctx) {
         node = node.parent;
     }
 
     @Override
-    public void enterIfexp(JythonParser.IfexpContext ctx) {
+    public void enterIfExp(JythonParser.IfExpContext ctx) {
         node = new Node(node, "If");
         node.setCurClass(currentClass);
         node.setCurMethod(currentMethod);
     }
 
     @Override
-    public void exitIfexp(JythonParser.IfexpContext ctx) {
+    public void exitIfExp(JythonParser.IfExpContext ctx) {
         node = node.parent;
     }
 
     @Override
-    public void enterElifexp(JythonParser.ElifexpContext ctx) {
+    public void enterElifExp(JythonParser.ElifExpContext ctx) {
         node = new Node(node, "Else If");
         node.setCurClass(currentClass);
         node.setCurMethod(currentMethod);
     }
 
     @Override
-    public void exitElifexp(JythonParser.ElifexpContext ctx) {
+    public void exitElifExp(JythonParser.ElifExpContext ctx) {
         node = node.parent;
     }
 
     @Override
-    public void enterElseexp(JythonParser.ElseexpContext ctx) {
+    public void enterElseExp(JythonParser.ElseExpContext ctx) {
         node = new Node(node, "Else");
         node.setCurClass(currentClass);
         node.setCurMethod(currentMethod);
     }
 
     @Override
-    public void exitElseexp(JythonParser.ElseexpContext ctx) {
+    public void exitElseExp(JythonParser.ElseExpContext ctx) {
         node = node.parent;
     }
 
     @Override
-    public void enterFor_statment(JythonParser.For_statmentContext ctx) {
+    public void enterForStatement(JythonParser.ForStatementContext ctx) {
         node = new Node(node, "For");
         node.setCurClass(currentClass);
         node.setCurMethod(currentMethod);
@@ -152,7 +152,7 @@ public class PhaseOneListener extends JythonBaseListener {
     }
 
     @Override
-    public void exitFor_statment(JythonParser.For_statmentContext ctx) {
+    public void exitForStatement(JythonParser.ForStatementContext ctx) {
         node = node.parent;
     }
 }

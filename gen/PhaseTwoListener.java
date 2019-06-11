@@ -3,6 +3,7 @@
 import Models.*;
 import Models.Error;
 import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.RuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
@@ -21,6 +22,8 @@ public class PhaseTwoListener extends JythonBaseListener {
     private Stack<Expression> expressions = new Stack<>();
     private String lastType = "Init";
     private List<String> lastArgs = new ArrayList<>();
+    private List<String> assignList = new ArrayList<>();
+    private boolean conditionError = false;
 
     PhaseTwoListener(String fileName, Node root) {
         node = root.nodes.get(memory++);
@@ -52,7 +55,7 @@ public class PhaseTwoListener extends JythonBaseListener {
 
     }
 
-    private void chainErrorCheck(int line) {
+    private void chainErrorCheck(int line, RuleContext ctx) {
         Tracer tracer = tracers.pop();
 
         ValidationResult res = tracer.validate(node, line, fileName, lastArgs);
@@ -63,13 +66,16 @@ public class PhaseTwoListener extends JythonBaseListener {
                 lastType = "unknown";
             } else
                 lastType = res.getType();
+
+            if(ctx.parent instanceof JythonParser.VarAssignContext)
+                assignList.add(lastType);
         } else
             System.out.println("Internal Error Variable");
 
     }
 
     @Override
-    public void exitReturn_statment(JythonParser.Return_statmentContext ctx) {
+    public void exitReturnStatement(JythonParser.ReturnStatementContext ctx) {
         String returnType = node.getCurMethod().getReturnType();
         if (!lastType.equals(returnType)) {
             if (returnType.equals("void"))
@@ -100,64 +106,64 @@ public class PhaseTwoListener extends JythonBaseListener {
     }
 
     @Override
-    public void enterWhile_statment(JythonParser.While_statmentContext ctx) {
+    public void enterWhileStatement(JythonParser.WhileStatementContext ctx) {
         node = node.move();
     }
 
     @Override
-    public void exitWhile_statment(JythonParser.While_statmentContext ctx) {
+    public void exitWhileStatement(JythonParser.WhileStatementContext ctx) {
         node = node.move();
     }
 
     @Override
-    public void enterIfexp(JythonParser.IfexpContext ctx) {
+    public void enterIfExp(JythonParser.IfExpContext ctx) {
         node = node.move();
     }
 
     @Override
-    public void exitIfexp(JythonParser.IfexpContext ctx) {
+    public void exitIfExp(JythonParser.IfExpContext ctx) {
         node = node.move();
     }
 
     @Override
-    public void enterElifexp(JythonParser.ElifexpContext ctx) {
+    public void enterElifExp(JythonParser.ElifExpContext ctx) {
         node = node.move();
     }
 
     @Override
-    public void exitElifexp(JythonParser.ElifexpContext ctx) {
+    public void exitElifExp(JythonParser.ElifExpContext ctx) {
         node = node.move();
     }
 
     @Override
-    public void enterElseexp(JythonParser.ElseexpContext ctx) {
+    public void enterElseExp(JythonParser.ElseExpContext ctx) {
         node = node.move();
     }
 
     @Override
-    public void exitElseexp(JythonParser.ElseexpContext ctx) {
+    public void exitElseExp(JythonParser.ElseExpContext ctx) {
         node = node.move();
     }
 
     @Override
-    public void enterFor_statment(JythonParser.For_statmentContext ctx) {
+    public void enterForStatement(JythonParser.ForStatementContext ctx) {
         node = node.move();
     }
 
     @Override
-    public void exitFor_statment(JythonParser.For_statmentContext ctx) {
+    public void exitForStatement(JythonParser.ForStatementContext ctx) {
         node = node.move();
     }
 
     @Override
-    public void enterMethod_call(JythonParser.Method_callContext ctx) {
+    public void enterMethodCall(JythonParser.MethodCallContext ctx) {
         tracers.push(new Tracer());
         if (ctx.start.getText().equals("self"))
             tracers.peek().addRing(new Tracer.Ring(Tracer.RefType.VARIABLE, "self"));
     }
 
     @Override
-    public void exitMethod_call(JythonParser.Method_callContext ctx) {
+    public void exitMethodCall(JythonParser.MethodCallContext ctx) {
         chainErrorCheck(ctx.start.getLine(), ctx.func().funcName.getText());
     }
 
@@ -204,7 +210,7 @@ public class PhaseTwoListener extends JythonBaseListener {
     @Override
     public void exitExpression(JythonParser.ExpressionContext ctx) {
         if (ctx.expression().isEmpty()) {
-            if (ctx.rightExp().BOOL() != null)
+            if (ctx.rightExp().bool() != null)
                 expressions.peek().setType("bool");
             else if (ctx.rightExp().INTEGER() != null)
                 expressions.peek().setType("int");
@@ -220,6 +226,13 @@ public class PhaseTwoListener extends JythonBaseListener {
         if (!(ctx.parent instanceof JythonParser.ExpressionContext)) {
             Expression.ExpResult result = expressions.pop().process(ctx.start.getLine(), fileName);
             lastType = result.result;
+            if(ctx.parent instanceof JythonParser.VarAssignContext)
+                assignList.add(lastType);
+            if(ctx.parent instanceof JythonParser.ConditionListContext)
+            {
+                if(!lastType.equals("bool"))
+                    conditionError = true;
+            }
             if (!result.success)
                 errors.add(result.error);
             if (ctx.parent instanceof JythonParser.ExplistContext)
@@ -236,7 +249,7 @@ public class PhaseTwoListener extends JythonBaseListener {
 
     @Override
     public void exitLeftExp(JythonParser.LeftExpContext ctx) {
-        chainErrorCheck(ctx.start.getLine());
+        chainErrorCheck(ctx.start.getLine(), ctx);
     }
 
     @Override
@@ -247,11 +260,40 @@ public class PhaseTwoListener extends JythonBaseListener {
     @Override
     public void exitArgs(JythonParser.ArgsContext ctx) {
         lastArgs = args.pop();
-
-//        StringBuilder p = new StringBuilder();
-//        for (String s : lastArgs)
-//            p.append(s).append(" ");
-//        System.out.println(p.toString());
     }
 
+    @Override
+    public void enterVarAssign(JythonParser.VarAssignContext ctx) {
+        assignList.clear();
+    }
+
+    @Override
+    public void exitVarAssign(JythonParser.VarAssignContext ctx) {
+        if(!assignList.get(0).equals(assignList.get(1))) {
+            errors.add(Error.error250(ctx.start.getLine(), assignList.get(0), assignList.get(1), fileName));
+        }
+    }
+
+    @Override
+    public void exitPrintStatement(JythonParser.PrintStatementContext ctx) {
+        if(!lastType.equals("int") && !lastType.equals("float") && !lastType.equals("string") && !lastType.equals("bool"))
+            errors.add(Error.error270(ctx.start.getLine(), fileName));
+    }
+
+    @Override
+    public void enterConditionList(JythonParser.ConditionListContext ctx) {
+        conditionError = false;
+    }
+
+    @Override
+    public void exitConditionList(JythonParser.ConditionListContext ctx) {
+        if(conditionError)
+            errors.add(Error.error220(ctx.start.getLine(), fileName));
+    }
+
+    @Override
+    public void exitArrayRightDec(JythonParser.ArrayRightDecContext ctx) {
+        if(!lastType.equals("int"))
+            errors.add(Error.error210(ctx.start.getLine(), fileName));
+    }
 }

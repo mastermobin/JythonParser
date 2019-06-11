@@ -1,12 +1,12 @@
 grammar Jython;
 
-program : importclass* (classDec)? ;
+program : importClass* (classDec)? ;
 
-importclass : ('import' USER_TYPE) ;
+importClass : ('import' USER_TYPE) ;
 
-classDec : 'class'  className = USER_TYPE ('(' parentClass = USER_TYPE ')')? '{' class_body* '}' ;
+classDec : 'class'  className = USER_TYPE ('(' parentClass = USER_TYPE ')')? '{' classBody* '}' ;
 
-class_body : varDec
+classBody : varDec
            | methodDec
            | constructor
            | arrayDec
@@ -15,78 +15,84 @@ class_body : varDec
 
 varDec : varType = type  varName = ID  ;
 
-arrayDec : varType = type '['expression']' varName = ID  ;
+arrayDec : varType = type '['']' varName = ID  ;
 
-methodDec : 'def'  methodType = return_type name = ID '(' parameters* ')''{' ( statment)* '}';
+methodDec : 'def'  methodType = returnType name = ID '(' parameters* ')''{' ( statement)* '}';
 
-return_type : type|'void'|type '['']';
+returnType : type|'void'|type '['']';
 
-constructor : 'def'  USER_TYPE '(' parameters ')''{' ( statment)* '}' ;
+constructor : 'def'  USER_TYPE '(' parameters ')''{' ( statement)* '}' ;
 
 variable : (varDec | arrayDec);
 
 parameters : variable (',' variable)* ;
 
-statment :
-          while_statment
-         | if_else_statment
-         | for_statment
+statement :
+          whileStatement
+         | ifElseStatement
+         | forStatement
          | varDec
          | assignment
-         | print_statment
-         | method_call
-         | return_statment
+         | printStatement
+         | methodCall
+         | returnStatement
          | arrayDec
          ;
 
-return_statment : 'return'  expression ;
+returnStatement : 'return'  expression ;
 
-condition_list : expression (('or'|'and')  expression)* ;
+conditionList : expression (('or'|'and')  expression)* ;
 
-while_statment : 'while' '(' condition_list ')' '{' statment* '}' ;
+whileStatement : 'while' '(' conditionList ')' '{' statement* '}' ;
 
-if_else_statment : ifexp elifexp* elseexp?;
+ifElseStatement : ifExp elifExp* elseExp?;
 
-ifexp : 'if' '(' condition_list ')' '{' statment* '}';
-elifexp : ('elif' '(' condition_list ')' '{' statment* '}');
-elseexp :  ('else' '{' statment* '}');
+ifExp : 'if' '(' conditionList ')' '{' statement* '}';
+elifExp : ('elif' '(' conditionList ')' '{' statement* '}');
+elseExp :  ('else' '{' statement* '}');
 
-print_statment : 'print' '('  expression ')' ;
+printStatement : 'print' '('  expression ')' ;
 
-for_statment : 'for' it = ID 'in' leftExp '{' statment* '}'
-             | 'for' it = ID 'in' 'range''('expression (',' expression)? (',' expression)? ')' '{' statment* '}'
+forStatement : 'for' it = ID 'in' leftExp '{' statement* '}'
+             | 'for' it = ID 'in' 'range''('expression (',' expression)? (',' expression)? ')' '{' statement* '}'
              ;
 
-assignment  : leftExp assignment_operators expression
-            | varDec assignment_operators expression
-            | arrayDec '='  type '('')' ('['expression']')
-            | leftExp '=' type '(' ')' ('['expression']')
+assignment  : varAssign
+            | varDecAssign
+            | arrayDec '='  arrayRightDec
+            | leftExp '=' arrayRightDec
             ;
+
+varDecAssign: varDec assignmentOperators expression;
+varAssign: leftExp assignmentOperators expression;
+
+arrayRightDec : type '('')' ('['expression']');
 
 
 expression  :
-              expression mult_mod_div expression
-            | expression add_sub expression
-            | expression eq_neq  expression
-            | expression relation_operators expression
+              expression multModDiv expression
+            | expression addSub expression
+            | expression eqNeq  expression
+            | expression relationOperators expression
             | rightExp
             ;
 
 rightExp :
-              'none'
-            | BOOL
+            'none'
+            | bool
             | INTEGER
             | STRING
             | FLOAT
             | USER_TYPE args
             | parentheses
-            | method_call
+            | methodCall
             | leftExp
             ;
 
+
 leftExp :  ((var | 'self' | func) (('.' var) | index | ('.' func))* (('.' var) | index)) | var;
 leftFun : ((var | 'self' | func) (('.' var) | index | ('.' func))* (('.' var) | index)) | var;
-method_call: ((leftFun '.') | 'self' )? func;
+methodCall: ((leftFun '.') | 'self' )? func;
 
 var : varName = ID ;
 func : funcName = ID args;
@@ -96,19 +102,19 @@ args :  '(' (explist)? ')' ;
 explist  :  expression (',' expression)*;
 
 
-assignment_operators : '=' | '+=' | '-=' | '*=' | '/=' ;
-eq_neq               : '==' | '!=' ;
-relation_operators   : '>' | '<' | '>=' | '<=';
-add_sub              : '+' | '-';
-mult_mod_div         : '*' | '/' | '%';
+assignmentOperators : '=' | '+=' | '-=' | '*=' | '/=' ;
+eqNeq               : '==' | '!=' ;
+relationOperators   : '>' | '<' | '>=' | '<=';
+addSub              : '+' | '-';
+multModDiv         : '*' | '/' | '%';
 type                 : jythonType | USER_TYPE ;
 USER_TYPE            : UpperCaseChar (LowerCaseChar|UpperCaseChar|DIGIT|'_')*  ;
 jythonType           : 'float'|'int'|'bool'|'string';
 ID                   : (LowerCaseChar)(LowerCaseChar|UpperCaseChar|DIGIT|'_' )*;
 INTEGER              : CDIGIT(DIGIT)* | [0] ;
 STRING               : '"' ~('\r' | '\n' | '"')* '"';
-BOOL                 : 'false' |'true';
-FLOAT                : DIGIT*'.'(DIGIT)+;
+bool                 : 'true' | 'false';
+FLOAT                : DIGIT*'.'(DIGIT)*;
 LowerCaseChar        : [a-z];
 UpperCaseChar        : [A-Z];
 DIGIT                : [0-9];

@@ -17,15 +17,15 @@ public interface JythonListener extends ParseTreeListener {
 	 */
 	void exitProgram(JythonParser.ProgramContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JythonParser#importclass}.
+	 * Enter a parse tree produced by {@link JythonParser#importClass}.
 	 * @param ctx the parse tree
 	 */
-	void enterImportclass(JythonParser.ImportclassContext ctx);
+	void enterImportClass(JythonParser.ImportClassContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JythonParser#importclass}.
+	 * Exit a parse tree produced by {@link JythonParser#importClass}.
 	 * @param ctx the parse tree
 	 */
-	void exitImportclass(JythonParser.ImportclassContext ctx);
+	void exitImportClass(JythonParser.ImportClassContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JythonParser#classDec}.
 	 * @param ctx the parse tree
@@ -37,15 +37,15 @@ public interface JythonListener extends ParseTreeListener {
 	 */
 	void exitClassDec(JythonParser.ClassDecContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JythonParser#class_body}.
+	 * Enter a parse tree produced by {@link JythonParser#classBody}.
 	 * @param ctx the parse tree
 	 */
-	void enterClass_body(JythonParser.Class_bodyContext ctx);
+	void enterClassBody(JythonParser.ClassBodyContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JythonParser#class_body}.
+	 * Exit a parse tree produced by {@link JythonParser#classBody}.
 	 * @param ctx the parse tree
 	 */
-	void exitClass_body(JythonParser.Class_bodyContext ctx);
+	void exitClassBody(JythonParser.ClassBodyContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JythonParser#varDec}.
 	 * @param ctx the parse tree
@@ -77,15 +77,15 @@ public interface JythonListener extends ParseTreeListener {
 	 */
 	void exitMethodDec(JythonParser.MethodDecContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JythonParser#return_type}.
+	 * Enter a parse tree produced by {@link JythonParser#returnType}.
 	 * @param ctx the parse tree
 	 */
-	void enterReturn_type(JythonParser.Return_typeContext ctx);
+	void enterReturnType(JythonParser.ReturnTypeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JythonParser#return_type}.
+	 * Exit a parse tree produced by {@link JythonParser#returnType}.
 	 * @param ctx the parse tree
 	 */
-	void exitReturn_type(JythonParser.Return_typeContext ctx);
+	void exitReturnType(JythonParser.ReturnTypeContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JythonParser#constructor}.
 	 * @param ctx the parse tree
@@ -117,105 +117,105 @@ public interface JythonListener extends ParseTreeListener {
 	 */
 	void exitParameters(JythonParser.ParametersContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JythonParser#statment}.
+	 * Enter a parse tree produced by {@link JythonParser#statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterStatment(JythonParser.StatmentContext ctx);
+	void enterStatement(JythonParser.StatementContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JythonParser#statment}.
+	 * Exit a parse tree produced by {@link JythonParser#statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitStatment(JythonParser.StatmentContext ctx);
+	void exitStatement(JythonParser.StatementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JythonParser#return_statment}.
+	 * Enter a parse tree produced by {@link JythonParser#returnStatement}.
 	 * @param ctx the parse tree
 	 */
-	void enterReturn_statment(JythonParser.Return_statmentContext ctx);
+	void enterReturnStatement(JythonParser.ReturnStatementContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JythonParser#return_statment}.
+	 * Exit a parse tree produced by {@link JythonParser#returnStatement}.
 	 * @param ctx the parse tree
 	 */
-	void exitReturn_statment(JythonParser.Return_statmentContext ctx);
+	void exitReturnStatement(JythonParser.ReturnStatementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JythonParser#condition_list}.
+	 * Enter a parse tree produced by {@link JythonParser#conditionList}.
 	 * @param ctx the parse tree
 	 */
-	void enterCondition_list(JythonParser.Condition_listContext ctx);
+	void enterConditionList(JythonParser.ConditionListContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JythonParser#condition_list}.
+	 * Exit a parse tree produced by {@link JythonParser#conditionList}.
 	 * @param ctx the parse tree
 	 */
-	void exitCondition_list(JythonParser.Condition_listContext ctx);
+	void exitConditionList(JythonParser.ConditionListContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JythonParser#while_statment}.
+	 * Enter a parse tree produced by {@link JythonParser#whileStatement}.
 	 * @param ctx the parse tree
 	 */
-	void enterWhile_statment(JythonParser.While_statmentContext ctx);
+	void enterWhileStatement(JythonParser.WhileStatementContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JythonParser#while_statment}.
+	 * Exit a parse tree produced by {@link JythonParser#whileStatement}.
 	 * @param ctx the parse tree
 	 */
-	void exitWhile_statment(JythonParser.While_statmentContext ctx);
+	void exitWhileStatement(JythonParser.WhileStatementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JythonParser#if_else_statment}.
+	 * Enter a parse tree produced by {@link JythonParser#ifElseStatement}.
 	 * @param ctx the parse tree
 	 */
-	void enterIf_else_statment(JythonParser.If_else_statmentContext ctx);
+	void enterIfElseStatement(JythonParser.IfElseStatementContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JythonParser#if_else_statment}.
+	 * Exit a parse tree produced by {@link JythonParser#ifElseStatement}.
 	 * @param ctx the parse tree
 	 */
-	void exitIf_else_statment(JythonParser.If_else_statmentContext ctx);
+	void exitIfElseStatement(JythonParser.IfElseStatementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JythonParser#ifexp}.
+	 * Enter a parse tree produced by {@link JythonParser#ifExp}.
 	 * @param ctx the parse tree
 	 */
-	void enterIfexp(JythonParser.IfexpContext ctx);
+	void enterIfExp(JythonParser.IfExpContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JythonParser#ifexp}.
+	 * Exit a parse tree produced by {@link JythonParser#ifExp}.
 	 * @param ctx the parse tree
 	 */
-	void exitIfexp(JythonParser.IfexpContext ctx);
+	void exitIfExp(JythonParser.IfExpContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JythonParser#elifexp}.
+	 * Enter a parse tree produced by {@link JythonParser#elifExp}.
 	 * @param ctx the parse tree
 	 */
-	void enterElifexp(JythonParser.ElifexpContext ctx);
+	void enterElifExp(JythonParser.ElifExpContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JythonParser#elifexp}.
+	 * Exit a parse tree produced by {@link JythonParser#elifExp}.
 	 * @param ctx the parse tree
 	 */
-	void exitElifexp(JythonParser.ElifexpContext ctx);
+	void exitElifExp(JythonParser.ElifExpContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JythonParser#elseexp}.
+	 * Enter a parse tree produced by {@link JythonParser#elseExp}.
 	 * @param ctx the parse tree
 	 */
-	void enterElseexp(JythonParser.ElseexpContext ctx);
+	void enterElseExp(JythonParser.ElseExpContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JythonParser#elseexp}.
+	 * Exit a parse tree produced by {@link JythonParser#elseExp}.
 	 * @param ctx the parse tree
 	 */
-	void exitElseexp(JythonParser.ElseexpContext ctx);
+	void exitElseExp(JythonParser.ElseExpContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JythonParser#print_statment}.
+	 * Enter a parse tree produced by {@link JythonParser#printStatement}.
 	 * @param ctx the parse tree
 	 */
-	void enterPrint_statment(JythonParser.Print_statmentContext ctx);
+	void enterPrintStatement(JythonParser.PrintStatementContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JythonParser#print_statment}.
+	 * Exit a parse tree produced by {@link JythonParser#printStatement}.
 	 * @param ctx the parse tree
 	 */
-	void exitPrint_statment(JythonParser.Print_statmentContext ctx);
+	void exitPrintStatement(JythonParser.PrintStatementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JythonParser#for_statment}.
+	 * Enter a parse tree produced by {@link JythonParser#forStatement}.
 	 * @param ctx the parse tree
 	 */
-	void enterFor_statment(JythonParser.For_statmentContext ctx);
+	void enterForStatement(JythonParser.ForStatementContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JythonParser#for_statment}.
+	 * Exit a parse tree produced by {@link JythonParser#forStatement}.
 	 * @param ctx the parse tree
 	 */
-	void exitFor_statment(JythonParser.For_statmentContext ctx);
+	void exitForStatement(JythonParser.ForStatementContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JythonParser#assignment}.
 	 * @param ctx the parse tree
@@ -226,6 +226,36 @@ public interface JythonListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAssignment(JythonParser.AssignmentContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JythonParser#varDecAssign}.
+	 * @param ctx the parse tree
+	 */
+	void enterVarDecAssign(JythonParser.VarDecAssignContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JythonParser#varDecAssign}.
+	 * @param ctx the parse tree
+	 */
+	void exitVarDecAssign(JythonParser.VarDecAssignContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JythonParser#varAssign}.
+	 * @param ctx the parse tree
+	 */
+	void enterVarAssign(JythonParser.VarAssignContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JythonParser#varAssign}.
+	 * @param ctx the parse tree
+	 */
+	void exitVarAssign(JythonParser.VarAssignContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JythonParser#arrayRightDec}.
+	 * @param ctx the parse tree
+	 */
+	void enterArrayRightDec(JythonParser.ArrayRightDecContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JythonParser#arrayRightDec}.
+	 * @param ctx the parse tree
+	 */
+	void exitArrayRightDec(JythonParser.ArrayRightDecContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JythonParser#expression}.
 	 * @param ctx the parse tree
@@ -267,15 +297,15 @@ public interface JythonListener extends ParseTreeListener {
 	 */
 	void exitLeftFun(JythonParser.LeftFunContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JythonParser#method_call}.
+	 * Enter a parse tree produced by {@link JythonParser#methodCall}.
 	 * @param ctx the parse tree
 	 */
-	void enterMethod_call(JythonParser.Method_callContext ctx);
+	void enterMethodCall(JythonParser.MethodCallContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JythonParser#method_call}.
+	 * Exit a parse tree produced by {@link JythonParser#methodCall}.
 	 * @param ctx the parse tree
 	 */
-	void exitMethod_call(JythonParser.Method_callContext ctx);
+	void exitMethodCall(JythonParser.MethodCallContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JythonParser#var}.
 	 * @param ctx the parse tree
@@ -337,55 +367,55 @@ public interface JythonListener extends ParseTreeListener {
 	 */
 	void exitExplist(JythonParser.ExplistContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JythonParser#assignment_operators}.
+	 * Enter a parse tree produced by {@link JythonParser#assignmentOperators}.
 	 * @param ctx the parse tree
 	 */
-	void enterAssignment_operators(JythonParser.Assignment_operatorsContext ctx);
+	void enterAssignmentOperators(JythonParser.AssignmentOperatorsContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JythonParser#assignment_operators}.
+	 * Exit a parse tree produced by {@link JythonParser#assignmentOperators}.
 	 * @param ctx the parse tree
 	 */
-	void exitAssignment_operators(JythonParser.Assignment_operatorsContext ctx);
+	void exitAssignmentOperators(JythonParser.AssignmentOperatorsContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JythonParser#eq_neq}.
+	 * Enter a parse tree produced by {@link JythonParser#eqNeq}.
 	 * @param ctx the parse tree
 	 */
-	void enterEq_neq(JythonParser.Eq_neqContext ctx);
+	void enterEqNeq(JythonParser.EqNeqContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JythonParser#eq_neq}.
+	 * Exit a parse tree produced by {@link JythonParser#eqNeq}.
 	 * @param ctx the parse tree
 	 */
-	void exitEq_neq(JythonParser.Eq_neqContext ctx);
+	void exitEqNeq(JythonParser.EqNeqContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JythonParser#relation_operators}.
+	 * Enter a parse tree produced by {@link JythonParser#relationOperators}.
 	 * @param ctx the parse tree
 	 */
-	void enterRelation_operators(JythonParser.Relation_operatorsContext ctx);
+	void enterRelationOperators(JythonParser.RelationOperatorsContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JythonParser#relation_operators}.
+	 * Exit a parse tree produced by {@link JythonParser#relationOperators}.
 	 * @param ctx the parse tree
 	 */
-	void exitRelation_operators(JythonParser.Relation_operatorsContext ctx);
+	void exitRelationOperators(JythonParser.RelationOperatorsContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JythonParser#add_sub}.
+	 * Enter a parse tree produced by {@link JythonParser#addSub}.
 	 * @param ctx the parse tree
 	 */
-	void enterAdd_sub(JythonParser.Add_subContext ctx);
+	void enterAddSub(JythonParser.AddSubContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JythonParser#add_sub}.
+	 * Exit a parse tree produced by {@link JythonParser#addSub}.
 	 * @param ctx the parse tree
 	 */
-	void exitAdd_sub(JythonParser.Add_subContext ctx);
+	void exitAddSub(JythonParser.AddSubContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JythonParser#mult_mod_div}.
+	 * Enter a parse tree produced by {@link JythonParser#multModDiv}.
 	 * @param ctx the parse tree
 	 */
-	void enterMult_mod_div(JythonParser.Mult_mod_divContext ctx);
+	void enterMultModDiv(JythonParser.MultModDivContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JythonParser#mult_mod_div}.
+	 * Exit a parse tree produced by {@link JythonParser#multModDiv}.
 	 * @param ctx the parse tree
 	 */
-	void exitMult_mod_div(JythonParser.Mult_mod_divContext ctx);
+	void exitMultModDiv(JythonParser.MultModDivContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JythonParser#type}.
 	 * @param ctx the parse tree
@@ -406,4 +436,14 @@ public interface JythonListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitJythonType(JythonParser.JythonTypeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JythonParser#bool}.
+	 * @param ctx the parse tree
+	 */
+	void enterBool(JythonParser.BoolContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JythonParser#bool}.
+	 * @param ctx the parse tree
+	 */
+	void exitBool(JythonParser.BoolContext ctx);
 }

@@ -85,26 +85,45 @@ public class Error {
         return new Error(line, message, fileName, 113);
     }
 
-    public static Error error114(int line, String operator, String operandA, String operandB, String fileName) {
-        String message = String.format("Error 114: in line %d, Can not use operator %s on %s & %s", line, operator, operandA, operandB);
-        return new Error(line, message, fileName, 114);
-    }
-
     public static Error error115(int line, String fileName, String all) {
         String message = String.format("Error 115: in line %d, One of operators type is Unknown in %s", line, all);
-        return new Error(line, message, fileName, 114);
+        return new Error(line, message, fileName, 115);
+    }
+
+    public static Error error210(int line, String fileName) {
+        String message = String.format("Error 210: in line %d, Size of an array must be of type integer", line);
+        return new Error(line, message, fileName, 210);
+    }
+
+    public static Error error220(int line, String fileName) {
+        String message = String.format("Error 220: in line %d, Condition type must be Boolean.", line);
+        return new Error(line, message, fileName, 220);
     }
 
     public static Error error230(int line, String fileName, String returnType) {
         String message = String.format("Error 230: in line %d, ReturnType of this method must be %s.", line, returnType);
-        return new Error(line, message, fileName, 114);
+        return new Error(line, message, fileName, 230);
     }
 
     public static Error error231(int line, String fileName) {
         String message = String.format("Error 230: in line %d, void methods can't return value.", line);
-        return new Error(line, message, fileName, 114);
+        return new Error(line, message, fileName, 231);
     }
 
+    public static Error error250(int line, String right, String left, String fileName) {
+        String message = String.format("Error 250: in line %d, Incompatible types: %s can not be converted to %s.", line, left, right);
+        return new Error(line, message, fileName, 250);
+    }
+
+    public static Error error270(int line, String fileName) {
+        String message = String.format("Error 270: in line %d, Type of parameter of print built-in function must be integer, string ,float or boolean.", line);
+        return new Error(line, message, fileName, 270);
+    }
+
+    public static Error error280(int line, String operator, String operandA, String operandB, String fileName) {
+        String message = String.format("Error 114: in line %d, Can not use operator %s on %s & %s", line, operator, operandA, operandB);
+        return new Error(line, message, fileName, 280);
+    }
     public static Error error112(int line, String name, String fileName, List<String> params) {
         StringBuilder args = new StringBuilder("(");
         for(String param : params){

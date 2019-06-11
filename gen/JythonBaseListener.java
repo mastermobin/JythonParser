@@ -27,13 +27,13 @@ public class JythonBaseListener implements JythonListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterImportclass(JythonParser.ImportclassContext ctx) { }
+	@Override public void enterImportClass(JythonParser.ImportClassContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitImportclass(JythonParser.ImportclassContext ctx) { }
+	@Override public void exitImportClass(JythonParser.ImportClassContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -51,13 +51,13 @@ public class JythonBaseListener implements JythonListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClass_body(JythonParser.Class_bodyContext ctx) { }
+	@Override public void enterClassBody(JythonParser.ClassBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClass_body(JythonParser.Class_bodyContext ctx) { }
+	@Override public void exitClassBody(JythonParser.ClassBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -99,13 +99,13 @@ public class JythonBaseListener implements JythonListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterReturn_type(JythonParser.Return_typeContext ctx) { }
+	@Override public void enterReturnType(JythonParser.ReturnTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitReturn_type(JythonParser.Return_typeContext ctx) { }
+	@Override public void exitReturnType(JythonParser.ReturnTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -147,121 +147,121 @@ public class JythonBaseListener implements JythonListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatment(JythonParser.StatmentContext ctx) { }
+	@Override public void enterStatement(JythonParser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatment(JythonParser.StatmentContext ctx) { }
+	@Override public void exitStatement(JythonParser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterReturn_statment(JythonParser.Return_statmentContext ctx) { }
+	@Override public void enterReturnStatement(JythonParser.ReturnStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitReturn_statment(JythonParser.Return_statmentContext ctx) { }
+	@Override public void exitReturnStatement(JythonParser.ReturnStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCondition_list(JythonParser.Condition_listContext ctx) { }
+	@Override public void enterConditionList(JythonParser.ConditionListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCondition_list(JythonParser.Condition_listContext ctx) { }
+	@Override public void exitConditionList(JythonParser.ConditionListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterWhile_statment(JythonParser.While_statmentContext ctx) { }
+	@Override public void enterWhileStatement(JythonParser.WhileStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitWhile_statment(JythonParser.While_statmentContext ctx) { }
+	@Override public void exitWhileStatement(JythonParser.WhileStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIf_else_statment(JythonParser.If_else_statmentContext ctx) { }
+	@Override public void enterIfElseStatement(JythonParser.IfElseStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIf_else_statment(JythonParser.If_else_statmentContext ctx) { }
+	@Override public void exitIfElseStatement(JythonParser.IfElseStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIfexp(JythonParser.IfexpContext ctx) { }
+	@Override public void enterIfExp(JythonParser.IfExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIfexp(JythonParser.IfexpContext ctx) { }
+	@Override public void exitIfExp(JythonParser.IfExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterElifexp(JythonParser.ElifexpContext ctx) { }
+	@Override public void enterElifExp(JythonParser.ElifExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitElifexp(JythonParser.ElifexpContext ctx) { }
+	@Override public void exitElifExp(JythonParser.ElifExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterElseexp(JythonParser.ElseexpContext ctx) { }
+	@Override public void enterElseExp(JythonParser.ElseExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitElseexp(JythonParser.ElseexpContext ctx) { }
+	@Override public void exitElseExp(JythonParser.ElseExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrint_statment(JythonParser.Print_statmentContext ctx) { }
+	@Override public void enterPrintStatement(JythonParser.PrintStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrint_statment(JythonParser.Print_statmentContext ctx) { }
+	@Override public void exitPrintStatement(JythonParser.PrintStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFor_statment(JythonParser.For_statmentContext ctx) { }
+	@Override public void enterForStatement(JythonParser.ForStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFor_statment(JythonParser.For_statmentContext ctx) { }
+	@Override public void exitForStatement(JythonParser.ForStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -274,6 +274,42 @@ public class JythonBaseListener implements JythonListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitAssignment(JythonParser.AssignmentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVarDecAssign(JythonParser.VarDecAssignContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVarDecAssign(JythonParser.VarDecAssignContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVarAssign(JythonParser.VarAssignContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVarAssign(JythonParser.VarAssignContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArrayRightDec(JythonParser.ArrayRightDecContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArrayRightDec(JythonParser.ArrayRightDecContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -327,13 +363,13 @@ public class JythonBaseListener implements JythonListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMethod_call(JythonParser.Method_callContext ctx) { }
+	@Override public void enterMethodCall(JythonParser.MethodCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMethod_call(JythonParser.Method_callContext ctx) { }
+	@Override public void exitMethodCall(JythonParser.MethodCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -411,61 +447,61 @@ public class JythonBaseListener implements JythonListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAssignment_operators(JythonParser.Assignment_operatorsContext ctx) { }
+	@Override public void enterAssignmentOperators(JythonParser.AssignmentOperatorsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAssignment_operators(JythonParser.Assignment_operatorsContext ctx) { }
+	@Override public void exitAssignmentOperators(JythonParser.AssignmentOperatorsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEq_neq(JythonParser.Eq_neqContext ctx) { }
+	@Override public void enterEqNeq(JythonParser.EqNeqContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEq_neq(JythonParser.Eq_neqContext ctx) { }
+	@Override public void exitEqNeq(JythonParser.EqNeqContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRelation_operators(JythonParser.Relation_operatorsContext ctx) { }
+	@Override public void enterRelationOperators(JythonParser.RelationOperatorsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRelation_operators(JythonParser.Relation_operatorsContext ctx) { }
+	@Override public void exitRelationOperators(JythonParser.RelationOperatorsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAdd_sub(JythonParser.Add_subContext ctx) { }
+	@Override public void enterAddSub(JythonParser.AddSubContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAdd_sub(JythonParser.Add_subContext ctx) { }
+	@Override public void exitAddSub(JythonParser.AddSubContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMult_mod_div(JythonParser.Mult_mod_divContext ctx) { }
+	@Override public void enterMultModDiv(JythonParser.MultModDivContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMult_mod_div(JythonParser.Mult_mod_divContext ctx) { }
+	@Override public void exitMultModDiv(JythonParser.MultModDivContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -490,6 +526,18 @@ public class JythonBaseListener implements JythonListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitJythonType(JythonParser.JythonTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBool(JythonParser.BoolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBool(JythonParser.BoolContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

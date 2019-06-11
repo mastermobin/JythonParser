@@ -23,7 +23,7 @@ public class JythonBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitImportclass(JythonParser.ImportclassContext ctx) { return visitChildren(ctx); }
+	@Override public T visitImportClass(JythonParser.ImportClassContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -37,7 +37,7 @@ public class JythonBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitClass_body(JythonParser.Class_bodyContext ctx) { return visitChildren(ctx); }
+	@Override public T visitClassBody(JythonParser.ClassBodyContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -65,7 +65,7 @@ public class JythonBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitReturn_type(JythonParser.Return_typeContext ctx) { return visitChildren(ctx); }
+	@Override public T visitReturnType(JythonParser.ReturnTypeContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -93,70 +93,70 @@ public class JythonBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitStatment(JythonParser.StatmentContext ctx) { return visitChildren(ctx); }
+	@Override public T visitStatement(JythonParser.StatementContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitReturn_statment(JythonParser.Return_statmentContext ctx) { return visitChildren(ctx); }
+	@Override public T visitReturnStatement(JythonParser.ReturnStatementContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitCondition_list(JythonParser.Condition_listContext ctx) { return visitChildren(ctx); }
+	@Override public T visitConditionList(JythonParser.ConditionListContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitWhile_statment(JythonParser.While_statmentContext ctx) { return visitChildren(ctx); }
+	@Override public T visitWhileStatement(JythonParser.WhileStatementContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitIf_else_statment(JythonParser.If_else_statmentContext ctx) { return visitChildren(ctx); }
+	@Override public T visitIfElseStatement(JythonParser.IfElseStatementContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitIfexp(JythonParser.IfexpContext ctx) { return visitChildren(ctx); }
+	@Override public T visitIfExp(JythonParser.IfExpContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitElifexp(JythonParser.ElifexpContext ctx) { return visitChildren(ctx); }
+	@Override public T visitElifExp(JythonParser.ElifExpContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitElseexp(JythonParser.ElseexpContext ctx) { return visitChildren(ctx); }
+	@Override public T visitElseExp(JythonParser.ElseExpContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitPrint_statment(JythonParser.Print_statmentContext ctx) { return visitChildren(ctx); }
+	@Override public T visitPrintStatement(JythonParser.PrintStatementContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitFor_statment(JythonParser.For_statmentContext ctx) { return visitChildren(ctx); }
+	@Override public T visitForStatement(JythonParser.ForStatementContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -164,6 +164,27 @@ public class JythonBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitAssignment(JythonParser.AssignmentContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitVarDecAssign(JythonParser.VarDecAssignContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitVarAssign(JythonParser.VarAssignContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitArrayRightDec(JythonParser.ArrayRightDecContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -198,7 +219,7 @@ public class JythonBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMethod_call(JythonParser.Method_callContext ctx) { return visitChildren(ctx); }
+	@Override public T visitMethodCall(JythonParser.MethodCallContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -247,35 +268,35 @@ public class JythonBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAssignment_operators(JythonParser.Assignment_operatorsContext ctx) { return visitChildren(ctx); }
+	@Override public T visitAssignmentOperators(JythonParser.AssignmentOperatorsContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitEq_neq(JythonParser.Eq_neqContext ctx) { return visitChildren(ctx); }
+	@Override public T visitEqNeq(JythonParser.EqNeqContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitRelation_operators(JythonParser.Relation_operatorsContext ctx) { return visitChildren(ctx); }
+	@Override public T visitRelationOperators(JythonParser.RelationOperatorsContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAdd_sub(JythonParser.Add_subContext ctx) { return visitChildren(ctx); }
+	@Override public T visitAddSub(JythonParser.AddSubContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMult_mod_div(JythonParser.Mult_mod_divContext ctx) { return visitChildren(ctx); }
+	@Override public T visitMultModDiv(JythonParser.MultModDivContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -290,4 +311,11 @@ public class JythonBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitJythonType(JythonParser.JythonTypeContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitBool(JythonParser.BoolContext ctx) { return visitChildren(ctx); }
 }
